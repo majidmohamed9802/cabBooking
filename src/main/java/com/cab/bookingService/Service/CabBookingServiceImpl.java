@@ -51,8 +51,25 @@ public class CabBookingServiceImpl implements CabBookingService {
 		
 	}
 	
-	public CabBookingDTO findBookingByNumber(Long userMobile) throws CabException {
+
+	
+	public String cancelBooking(Integer bookingId)  {
 		
+		try {		
+		Optional<CabBooking> optional = cabRepo.findById(bookingId);
+		CabBooking booking = optional.orElseThrow(()-> new CabException("Booking doesnt exist"));
+		cabRepo.delete(booking);		
+		return "Booking with id: "+ bookingId+ " has been deleted!!!!!!!!!!!!!!!!!" ;
+	}
+		catch(Exception e) {
+			return e.getLocalizedMessage()+ " <----------------ERROR OCCURED";
+		}
+		
+	}
+
+	@Override
+	public CabBookingDTO findBookingByNumber(long userMobile) throws CabException {
+
 		CabBooking booking = cabRepo.findByUserMobile(userMobile);
 		
 		if(booking==null) {throw new CabException("Booking doesnt exist with this number");}
@@ -70,20 +87,8 @@ public class CabBookingServiceImpl implements CabBookingService {
 		
 		return dto;
 	}
+
 	
-	public String cancelBooking(Integer bookingId) throws CabException {
-		
-		try {		
-		Optional<CabBooking> optional = cabRepo.findById(bookingId);
-		CabBooking booking = optional.orElseThrow(()-> new CabException("Booking doesnt exist"));
-		cabRepo.delete(booking);		
-		return "Booking with id: "+ bookingId+ " has been deleted!!!!!!!!!!!!!!!!!" ;
-	}
-		catch(Exception e) {
-			return e.getLocalizedMessage()+ " <----------------ERROR OCCURED";
-		}
-		
-	}
 	
 	
 	
