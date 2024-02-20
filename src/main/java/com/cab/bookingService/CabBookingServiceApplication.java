@@ -14,18 +14,18 @@ import com.cab.bookingService.Service.CabBookingServiceImpl;
 import ch.qos.logback.classic.Logger;
 
 @SpringBootApplication
-public class CabBookingServiceApplication implements CommandLineRunner{
+public class CabBookingServiceApplication{// implements CommandLineRunner{
 	
-	public final static Log LOGGER = LogFactory.getLog(CabBookingServiceApplication.class);
+//	public final static Log LOGGER = LogFactory.getLog(CabBookingServiceApplication.class);
 	
-	@Autowired
-	CabBookingServiceImpl cabService ;
+//	@Autowired
+//	CabBookingServiceImpl cabService ;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CabBookingServiceApplication.class, args);
 	}
 
-	@Override
+	/*@Override
 	public void run(String... args) throws Exception {
 		bookCab();
 		//findByNumber();
@@ -73,6 +73,6 @@ public class CabBookingServiceApplication implements CommandLineRunner{
 		}catch(Exception e ) {
 			LOGGER.info(e.getMessage());
 		}
-	}
+	}*/
 
 }
