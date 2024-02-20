@@ -55,20 +55,18 @@ public class CabBookingDTO {
 		this.status = status;
 	}
 	
-/*	public void  calculateFare(String source, String destination ) {
-		
-		//float fare;
-		
-		if(source.equals("San Jose") && destination.equals("Los Angeles")) {setFare(340f);}
-		if(source.equals("San Francisco") && destination.equals("San Jose")) {setFare(48F);}
-		if(source.equals("Los Angles") && destination.equals("San Diego")) {setFare(120f);}
-		if(source.equals("Pheonix") && destination.equals("Tucson")) {setFare(114f);}
+	@Override
+    public String toString() {
+        return "BookingDTO----->  {" +
+                "bookingId= " + bookingId +
+                ", source= '" + source + '\'' +
+                ", destination= '" + destination + '\'' +
+                ", fare= " + fare +
+                ", travelDate= " + travelDate +
+                ", userMobile= " + userMobile +
+                ", status= " + status +
+                '}';	
 	
-
-		
 	}
-	*/		
-	
-	
 
 }

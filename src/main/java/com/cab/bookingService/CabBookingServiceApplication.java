@@ -8,6 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.cab.bookingService.DTO.CabBookingDTO;
+import com.cab.bookingService.Entity.CabBooking;
 import com.cab.bookingService.Service.CabBookingServiceImpl;
 
 import ch.qos.logback.classic.Logger;
@@ -27,21 +28,49 @@ public class CabBookingServiceApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		bookCab();
+		//findByNumber();
+		//cancelBooking();
 	}
 	
 	
 	public void bookCab() {
 		try {
 			CabBookingDTO dto = new CabBookingDTO();
-			dto.setSource("San Jose");
-			dto.setDestination("Los Angles");
-			dto.setUserMobile(9998766756L);
+			dto.setSource("Los Angles");
+			dto.setDestination("San Diego");
+			dto.setUserMobile(99999L);
 		
 			String message =cabService.bookCab(dto);
 			
 			LOGGER.info(message);
 			
 		}catch(Exception e) {
+			LOGGER.info(e.getMessage());
+		}
+	}
+	
+	
+	public void findByNumber() {
+		
+		try {
+			Long number = 9877766756l;
+			CabBookingDTO dto= cabService.findBookingByNumber(number);
+			LOGGER.info(dto + "-------------------- SUCCESSFUL");
+						
+		}catch(Exception e) {
+			LOGGER.info(e.getMessage());
+		}
+		
+	}
+	
+	public void cancelBooking() {
+		try {
+			
+			Integer bookingId = 7;
+			String message = cabService.cancelBooking(bookingId);
+			LOGGER.info(message);
+			
+		}catch(Exception e ) {
 			LOGGER.info(e.getMessage());
 		}
 	}

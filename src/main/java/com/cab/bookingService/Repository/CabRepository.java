@@ -7,5 +7,7 @@ import com.cab.bookingService.Entity.CabBooking;
 
 @Repository
 public interface CabRepository extends CrudRepository<CabBooking, Integer>{
+	
+	public CabBooking findByUserMobile(Long userMobile);
 
 }

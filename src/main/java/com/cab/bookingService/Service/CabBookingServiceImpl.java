@@ -1,6 +1,7 @@
 package com.cab.bookingService.Service;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,9 +46,46 @@ public class CabBookingServiceImpl implements CabBookingService {
 		
 		return success;
 		}catch(Exception e) {
-			return e.getMessage()+"   error in SERVICE class";
+			return e.getMessage()+" <----------------ERROR OCCURED";
 		}
 		
 	}
+	
+	public CabBookingDTO findBookingByNumber(Long userMobile) throws CabException {
+		
+		CabBooking booking = cabRepo.findByUserMobile(userMobile);
+		
+		if(booking==null) {throw new CabException("Booking doesnt exist with this number");}
+		
+		CabBookingDTO dto = new CabBookingDTO();
+		dto.setBookingId(booking.getBookingId());
+		dto.setDestination(booking.getDestination());
+		dto.setFare(booking.getFare());
+		dto.setSource(booking.getSource());
+		dto.setStatus(booking.getStatus());
+		dto.setTravelDate(booking.getTravelDate());
+		dto.setUserMobile(booking.getUserMobile());
+		
+		
+		
+		return dto;
+	}
+	
+	public String cancelBooking(Integer bookingId) throws CabException {
+		
+		try {		
+		Optional<CabBooking> optional = cabRepo.findById(bookingId);
+		CabBooking booking = optional.orElseThrow(()-> new CabException("Booking doesnt exist"));
+		cabRepo.delete(booking);		
+		return "Booking with id: "+ bookingId+ " has been deleted!!!!!!!!!!!!!!!!!" ;
+	}
+		catch(Exception e) {
+			return e.getLocalizedMessage()+ " <----------------ERROR OCCURED";
+		}
+		
+	}
+	
+	
+	
 
 }
