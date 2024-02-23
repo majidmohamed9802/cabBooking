@@ -1,12 +1,13 @@
 package com.cab.bookingService.Exception;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class ErrorInfo {
 	
 	private String errorMessage;
 	private Integer errorCode;
-	private LocalDate errorDate;
+	private LocalDateTime errorDate;
 	public String getErrorMessage() {
 		return errorMessage;
 	}
@@ -19,10 +20,10 @@ public class ErrorInfo {
 	public void setErrorCode(Integer errorCode) {
 		this.errorCode = errorCode;
 	}
-	public LocalDate getErrorDate() {
+	public LocalDateTime getErrorDate() {
 		return errorDate;
 	}
-	public void setErrorDate(LocalDate errorDate) {
+	public void setErrorDate(LocalDateTime errorDate) {
 		this.errorDate = errorDate;
 	}
 	

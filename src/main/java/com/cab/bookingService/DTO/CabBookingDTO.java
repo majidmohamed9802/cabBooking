@@ -2,13 +2,19 @@ package com.cab.bookingService.DTO;
 
 import java.time.LocalDate;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Pattern;
+
 public class CabBookingDTO {
 	
 	private Integer	bookingId;
+	@Pattern(regexp = "(San Jose|San Francisco|Los Angles|Pheonix)", message = "Invalid Source !")
 	private String source;
+	@Pattern(regexp = "(San Jose|San Diego|Los Angles|Tucson)", message = "Invalid Destination !")
 	private String destination;
 	private Float fare;
 	private LocalDate travelDate;
+	@Min(value = 99999,message = "Enter a valid phone number")
 	private Long userMobile;
 	private Character status;
 	
