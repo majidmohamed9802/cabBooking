@@ -1,5 +1,7 @@
 package com.cab.bookingService.API;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +33,17 @@ public class CabBookingAPI {
 		return new ResponseEntity<CabBookingDTO>(dto,HttpStatus.OK);
 		
 	}
+	
+	
+	@GetMapping(value = "/bookings")
+	public ResponseEntity<List<CabBookingDTO>> findAllBookings(){
+		
+		List<CabBookingDTO> dtos= service.findAllBookings();
+		
+		return new ResponseEntity<List<CabBookingDTO>>(dtos,HttpStatus.OK);
+		
+	}
+	
 	
 	@PostMapping(value = "/")
 	public ResponseEntity<String> bookCab(@RequestBody CabBookingDTO dto){

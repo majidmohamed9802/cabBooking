@@ -1,6 +1,8 @@
 package com.cab.bookingService.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,6 +88,32 @@ public class CabBookingServiceImpl implements CabBookingService {
 		
 		
 		return dto;
+	}
+
+
+
+	@Override
+	public List<CabBookingDTO> findAllBookings() {
+		
+		List<CabBooking> list = cabRepo.findAllBookings();
+		
+		List<CabBookingDTO> dtos = new ArrayList<CabBookingDTO>();
+		
+		list.forEach(cab->{
+			CabBookingDTO dto = new CabBookingDTO();
+			dto.setBookingId(cab.getBookingId());
+			dto.setDestination(cab.getDestination());
+			dto.setFare(cab.getFare());
+			dto.setSource(cab.getSource());
+			dto.setStatus(cab.getStatus());
+			dto.setTravelDate(cab.getTravelDate());
+			dto.setUserMobile(cab.getUserMobile());
+			dtos.add(dto);			
+		});
+		
+		
+		
+		return dtos;
 	}
 
 	
