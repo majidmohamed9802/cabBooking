@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,8 +19,11 @@ import com.cab.bookingService.DTO.CabBookingDTO;
 import com.cab.bookingService.Exception.CabException;
 import com.cab.bookingService.Service.CabBookingService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping(value = "/bookings")
+@Validated
 public class CabBookingAPI {
 	
 	@Autowired
@@ -46,7 +50,7 @@ public class CabBookingAPI {
 	
 	
 	@PostMapping(value = "/")
-	public ResponseEntity<String> bookCab(@RequestBody CabBookingDTO dto){
+	public ResponseEntity<String> bookCab(@Valid @RequestBody CabBookingDTO dto){
 		
 		String success = service.bookCab(dto);		
 		
