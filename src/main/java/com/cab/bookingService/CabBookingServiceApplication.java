@@ -9,12 +9,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.cab.bookingService.DTO.CabBookingDTO;
 import com.cab.bookingService.Entity.CabBooking;
+import com.cab.bookingService.Repository.CabRepository;
 import com.cab.bookingService.Service.CabBookingServiceImpl;
 
 import ch.qos.logback.classic.Logger;
 
 @SpringBootApplication
 public class CabBookingServiceApplication{
+	
 	
 
 
