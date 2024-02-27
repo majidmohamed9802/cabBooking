@@ -48,7 +48,7 @@ public class CabBookingServiceImpl implements CabBookingService {
 		
 		return success;
 		}catch(Exception e) {
-			return e.getMessage()+" <----------------ERROR OCCURED";
+			return e.getMessage();
 		}
 		
 	}
@@ -61,7 +61,7 @@ public class CabBookingServiceImpl implements CabBookingService {
 		Optional<CabBooking> optional = cabRepo.findById(bookingId);
 		CabBooking booking = optional.orElseThrow(()-> new CabException("Booking doesnt exist"));
 		cabRepo.delete(booking);		
-		return "Booking with id: "+ bookingId+ " has been deleted!!!!!!!!!!!!!!!!!" ;
+		return "Booking with id: "+ bookingId+ " has been deleted!" ;
 	}
 		catch(Exception e) {
 			return e.getLocalizedMessage()+ " <----------------ERROR OCCURED";
