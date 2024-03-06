@@ -5,8 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.time.LocalDate;
 import java.util.Optional;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -31,6 +30,16 @@ class CabBookingServiceApplicationTests {
 	CabBookingService service = new CabBookingServiceImpl();
 
 	
+	
+	/*  CabBooking correctBooking = new CabBooking();
+		correctBooking.setSource("San Jose");
+		correctBooking.setDestination("Los Angles");
+		correctBooking.setUserMobile(9877766756l);
+		correctBooking.setBookingId(1);
+		correctBooking.setFare(340f);
+		correctBooking.setStatus('B');
+		correctBooking.setTravelDate(LocalDate.now());  */
+	
 	@Test
 	public void shouldBookCab() {
 		
@@ -47,13 +56,34 @@ class CabBookingServiceApplicationTests {
 		
 		
 	}
+	 
+	/*
 	
+	@Test
+	public void numberDoesntExist()  {
+		
+		
+		CabBooking incorrectBooking = new CabBooking();
+		incorrectBooking.setSource("San Jose");
+		incorrectBooking.setDestination("Los Angles");
+		incorrectBooking.setUserMobile(98l);
+		incorrectBooking.setBookingId(1);
+		incorrectBooking.setFare(340f);
+		incorrectBooking.setStatus('B');
+		incorrectBooking.setTravelDate(LocalDate.now());	
 
 	
+	    Mockito.when(repo.save(incorrectBooking)).thenThrow(new CabException("Booking doesnt exist with this number"));
+
 	
+	    CabException e = Assertions.assertThrows(CabException.class, () -> service.findBookingByNumber(98l));
+		
+		
+		assertEquals("Booking doesnt exist with this number", e.getMessage());	
+			
+	}
 	
-	
-	
+	*/
 	
 	@Test
 	public void shouldCancelBooking() {

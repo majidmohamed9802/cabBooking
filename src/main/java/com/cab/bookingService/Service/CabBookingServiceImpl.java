@@ -72,10 +72,9 @@ public class CabBookingServiceImpl implements CabBookingService {
 	@Override
 	public CabBookingDTO findBookingByNumber(long userMobile) throws CabException {
 
-		CabBooking booking = cabRepo.findByUserMobile(userMobile);
 		
-		if(booking==null) {throw new CabException("Booking doesnt exist with this number");}
-		
+		CabBooking booking = cabRepo.findByUserMobile(userMobile);	
+		if(booking==null) {throw new CabException("Booking doesnt exist with this number");}	
 		CabBookingDTO dto = new CabBookingDTO();
 		dto.setBookingId(booking.getBookingId());
 		dto.setDestination(booking.getDestination());
@@ -84,8 +83,7 @@ public class CabBookingServiceImpl implements CabBookingService {
 		dto.setStatus(booking.getStatus());
 		dto.setTravelDate(booking.getTravelDate());
 		dto.setUserMobile(booking.getUserMobile());
-		
-		
+
 		
 		return dto;
 	}
